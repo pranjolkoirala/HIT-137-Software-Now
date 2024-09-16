@@ -1,0 +1,28 @@
+def process_string(s):
+    # Separate the input string into digits and letters
+    numbers_substring = ''.join(c for c in s if c.isdigit())
+    letters_substring = ''.join(c for c in s if c.isalpha())
+    
+    # Convert even numbers in the numbers_substring to ASCII codes
+    ascii_numbers = []
+    for char in numbers_substring:
+        num = int(char)
+        if num % 2 == 0:
+            ascii_numbers.append(ord(char))
+    
+    # Convert upper-case letters in the letters_substring to ASCII codes
+    ascii_letters = []
+    for char in letters_substring:
+        if char.isupper():
+            ascii_letters.append(ord(char))
+    
+    return numbers_substring, letters_substring, ascii_numbers, ascii_letters
+
+# Example usage
+s = "56aAww1984sktr23527@aYmn145ss785fsq31D0"
+numbers_substring, letters_substring, ascii_numbers, ascii_letters = process_string(s)
+
+print(f"Numbers Substring: {numbers_substring}")
+print(f"Letters Substring: {letters_substring}")
+print(f"ASCII Codes of Even Numbers: {ascii_numbers}")
+print(f"ASCII Codes of Upper-case Letters: {ascii_letters}")

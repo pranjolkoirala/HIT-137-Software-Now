@@ -1,0 +1,20 @@
+def decrypt_caesar_cipher(text):
+    decrypted_text = []
+    for char in text:
+        if char.isalpha():
+            if char.isupper():
+                new_char = chr((ord(char) - ord('A') + 13) % 26  + ord('A'))
+            else:
+                new_char = chr((ord(char) - ord('a') + 13 )% 26 + ord('a'))
+            decrypted_text.append(new_char)
+        else:
+            decrypted_text.append(char)
+    return ''.join(decrypted_text)
+
+def find_correct_shift(ciphertext):
+        decrypted_text = decrypt_caesar_cipher(ciphertext)
+        print(decrypted_text)
+# Ciphertext given in the problem
+ciphertext = ("FRYSVFU VZCNGVRAG NAQ YVGGYR VAFRPHER ZNXR ZVFGNXRF NZ BHG BS PBAGEBY NAONG GVZRF UNEQ GB UNAQYR OHG VS LBH PNAG UNAQYR ZR NG ZL JBEFG GURA LBH FHER NF URYYOBAG ORFREIR ZR NG ZL ORFG ZNEVYLA ZBAEBR")
+
+find_correct_shift(ciphertext)

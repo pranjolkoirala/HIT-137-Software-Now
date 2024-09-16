@@ -1,0 +1,53 @@
+from PIL import Image
+import numpy as np
+import time
+
+# Step 1: Generate the number
+current_time = int(time.time())
+generated_number = (current_time % 100) + 50
+
+if generated_number % 2 == 0:
+    generated_number += 10
+
+print(f"Generated Number: {generated_number}")
+
+# Step 2: Modify Image Pixels
+def modify_image_pixels(input_image_path, output_image_path, add_value):
+    # Open the image
+    image = Image.open(input_image_path)
+    pixels = np.array(image)
+    
+    # Modify the pixel values
+    modified_pixels = pixels + add_value
+    
+    # Clip pixel values to be within valid range [0, 255]
+    modified_pixels = np.clip(modified_pixels, 0, 255)
+    
+    # Create new image with modified pixels
+    new_image = Image.fromarray(modified_pixels.astype('uint8'))
+    new_image.save(output_image_path)
+    
+    return new_image
+
+# Paths to the input and output images
+input_image_path = "./Assignment2/chapter1.jpg"
+output_image_path = "./Assignment2/chapter1out.jpg"
+
+# Modify the image and save the new image
+new_image = modify_image_pixels(input_image_path, output_image_path, generated_number)
+
+# Step 3: Sum the Red Pixel Values
+def sum_red_pixel_values(image_path):
+    # Open the image
+    image = Image.open(image_path)
+    pixels = np.array(image)
+    
+    # Sum the red channel values
+    red_channel = pixels[:, :, 0]  # Extract the red channel
+    red_sum = np.sum(red_channel)
+    
+    return red_sum
+
+# Compute the sum of the red pixel values
+red_sum = sum_red_pixel_values(output_image_path)
+print(f"Sum of Red Pixel Values: {red_sum}")
