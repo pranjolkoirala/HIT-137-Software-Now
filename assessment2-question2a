@@ -30,8 +30,8 @@ def modify_image_pixels(input_image_path, output_image_path, add_value):
     return new_image
 
 # Paths to the input and output images
-input_image_path = "./Assignment2/chapter1.jpg"
-output_image_path = "./Assignment2/chapter1out.jpg"
+input_image_path = "chapter1.jpg"
+output_image_path = "chapter1out.jpg"
 
 # Modify the image and save the new image
 new_image = modify_image_pixels(input_image_path, output_image_path, generated_number)
