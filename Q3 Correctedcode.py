@@ -19,10 +19,8 @@ def process_numbers():
     
     return numbers  # Return the modified list
 
-# List of numbers for further processing
 my_set = [1, 2, 3, 4, 5, 4, 3, 2, 1]
 
-# Store the result of the process_numbers function
 result = process_numbers()
 
 # Function to modify the dictionary
